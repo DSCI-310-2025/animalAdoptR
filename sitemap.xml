@@ -1,0 +1,23 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/404.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/authors.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/index.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/LICENSE-text.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/LICENSE.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/assign_season.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/calculate_age_years.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/convert_to_factors.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/ensure_dir_exists.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/evaluate_rf_model.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/group_rare_categories.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/index.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/load_data.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/plot_adoption_distribution.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/plot_age_distribution.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/plot_confusion_matrix.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/plot_feature_importance.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/plot_grouped_adoption.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/save_count_table.html</loc></url>
+<url><loc>https://dsci-310-2025.github.io/animalAdoptR/reference/train_rf_model.html</loc></url>
+</urlset>
+
