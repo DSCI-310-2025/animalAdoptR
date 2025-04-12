@@ -9,3 +9,8 @@
 ```r
 # install.packages("remotes") if you don't have it
 remotes::install_github("DSCI-310-2025/animalAdoptR")
+```
+
+## Code of Conduct
+
+Please note that the animalAdoptR project is released with a [Contributor Code of Conduct](https://dsci-310-2025.github.io/animalAdoptR/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
