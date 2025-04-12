@@ -44,24 +44,61 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><p><a href="https://dsci-310-2025.github.io/animalAdoptR/"><img src="https://img.shields.io/badge/docs-pkgdown-blue" alt="Pkgdown site"></a></p>
-<!-- badges: start -->
-
+  <main id="main" class="col-md-9">
 <div class="section level1">
 <div class="page-header"><h1 id="animaladoptr">animalAdoptR<a class="anchor" aria-label="anchor" href="#animaladoptr"></a>
 </h1></div>
-<p><code>animalAdoptR</code> is an R package that provides helper functions for analyzing animal shelter adoption data — including data loading, cleaning, visualization, and modeling.</p>
+<p><strong>animalAdoptR</strong> is an R package that provides helper functions for preprocessing, visualizing, and modeling animal shelter adoption data. It was built as part of a data science course project to encourage code modularity, reproducibility, and reusability.</p>
 <div class="section level2">
-<h2 id="id_-installation">📦 Installation<a class="anchor" aria-label="anchor" href="#id_-installation"></a>
+<h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
 </h2>
+<ul>
+<li>Load and validate CSV datasets with informative messages</li>
+<li>Preprocess and group rare categories for categorical variables</li>
+<li>Train and evaluate random forest models</li>
+<li>Generate clean visualizations for adoption rates, feature importance, and confusion matrices</li>
+<li>Save plots and summary tables directly to file</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>To install the development version of <code>animalAdoptR</code> from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes") if you don't have it</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"DSCI-310-2025/animalAdoptR"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"DSCI-310-2025/animalAdoptR"</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Then load the package:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dsci-310-2025.github.io/animalAdoptR/">animalAdoptR</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="example-usage">Example Usage<a class="anchor" aria-label="anchor" href="#example-usage"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load and inspect data</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/load_data.html">load_data</a></span><span class="op">(</span><span class="st">"data/processed/longbeach_transformed.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Train a model</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/train_rf_model.html">train_rf_model</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">adopted</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Evaluate it</span></span>
+<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/evaluate_rf_model.html">evaluate_rf_model</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot confusion matrix</span></span>
+<span><span class="fu"><a href="reference/plot_confusion_matrix.html">plot_confusion_matrix</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">confusion_matrix</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot feature importance</span></span>
+<span><span class="fu"><a href="reference/plot_feature_importance.html">plot_feature_importance</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
 <p>Please note that the animalAdoptR project is released with a <a href="https://dsci-310-2025.github.io/animalAdoptR/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
+<div class="section level2">
+<h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+</h2>
+<p>This project is licensed under the <a href="https://opensource.org/license/MIT" class="external-link">MIT License</a>.</p>
 </div>
 </div>
 
@@ -100,6 +137,8 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://github.com/DSCI-310-2025/animalAdoptR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/DSCI-310-2025/animalAdoptR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://dsci-310-2025.github.io/animalAdoptR/"><img src="https://github.com/DSCI-310-2025/animalAdoptR/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
 <li><a href="https://app.codecov.io/gh/DSCI-310-2025/animalAdoptR" class="external-link"><img src="https://codecov.io/gh/DSCI-310-2025/animalAdoptR/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
