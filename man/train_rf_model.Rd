@@ -25,6 +25,16 @@ Trains a Random Forest model using the provided formula and data. Handles both s
 and dot notation in formula. Checks for missing variables and ensures reproducibility via seed.
 }
 \examples{
+\dontrun{
+# Example data
+df <- data.frame(
+  adopted = factor(c("Yes", "No", "Yes", "No")),
+  age = c(2, 5, 1, 4),
+  sex = factor(c("M", "F", "F", "M"))
+)
+
+# Train model
 model <- train_rf_model(df, adopted ~ age + sex)
+}
 
 }

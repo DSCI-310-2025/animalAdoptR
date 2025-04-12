@@ -19,7 +19,6 @@ library(testthat)
 library(tidyverse)
 library(ggplot2)
 
-source("../../R/eda.R")
 
 # Dummy data
 test_data <- tibble(

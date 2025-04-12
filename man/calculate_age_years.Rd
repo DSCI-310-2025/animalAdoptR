@@ -22,7 +22,7 @@ and vectors of dates, with proper NA handling.
 # Single date
 calculate_age_years("2015-01-01")
 # Vector of dates
-calculate_age_years(c("2010-05-15", "2018-10-20", ...))
+calculate_age_years(c("2010-05-15", "2018-10-20", "2012-03-03"))
 # With custom reference date
 calculate_age_years("2015-01-01", reference_date = "2020-01-01")
 }

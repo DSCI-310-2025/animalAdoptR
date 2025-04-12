@@ -18,7 +18,9 @@ A tibble (data.frame) loaded from the file and print dimensions of the dataset i
 Load CSV and print dimensions
 }
 \examples{
+\dontrun{
 data <- load_data("data/processed/longbeach_transformed.csv")
 data <- load_data("data/processed/my_data.csv", verbose = FALSE)
+}
 
 }

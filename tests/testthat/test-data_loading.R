@@ -10,7 +10,6 @@
 # - Temporary file and directory creation to isolate test environment
 
 library(testthat)
-source("../../R/data_loading.R")  # Load the functions
 
 test_that("ensure_dir_exists creates directory when it doesn't exist", {
   # Create a temporary directory path like "/tmp/Rtmpabcdef/test_ensure_directory"

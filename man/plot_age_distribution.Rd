@@ -20,6 +20,12 @@ Plot age distribution histogram
 Creates a histogram showing how age varies with adoption outcomes.
 }
 \examples{
-plot_age_distribution(df, "results/figures/age_distribution.png")
-
+\dontrun{
+# Create sample data
+sample_data <- data.frame(
+  age = c(1, 3, 5, 2, 4),
+  adopted = factor(c("Yes", "No", "Yes", "No", "Yes"))
+)
+plot_age_distribution(sample_data, "results/figures/age_distribution.png")
+}
 }

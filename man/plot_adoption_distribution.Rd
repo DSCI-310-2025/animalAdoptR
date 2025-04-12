@@ -18,6 +18,9 @@ Plot overall adoption distribution
 Creates a bar plot showing the distribution of adoption outcomes (e.g., Yes/No).
 }
 \examples{
+\dontrun{
+df <- data.frame(adopted = factor(c("Yes", "No", "Yes", "Yes", "No")))
 plot_adoption_distribution(df)
+}
 
 }

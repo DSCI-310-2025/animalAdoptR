@@ -30,8 +30,10 @@ ensure_dir_exists <- function(dir_path, recursive = TRUE, show_warnings = FALSE)
 #' @return A tibble (data.frame) loaded from the file and print dimensions of the dataset if verbose is TRUE
 #' 
 #' @examples
+#' \dontrun{
 #' data <- load_data("data/processed/longbeach_transformed.csv")
 #' data <- load_data("data/processed/my_data.csv", verbose = FALSE)
+#' }
 #'
 #' @export
 load_data <- function(path, verbose = TRUE) {

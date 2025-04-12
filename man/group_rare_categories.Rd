@@ -24,5 +24,13 @@ Group rare categories in a column
 Replaces specified rare categories in a column with a custom label (e.g., "Other").
 }
 \examples{
-group_rare_categories(data, "animal_type", c("reptile", "guinea pig"))
+# group_rare_categories(data, "animal_type", c("reptile", "guinea pig"))
+\dontrun{
+df <- data.frame(
+  animal_type = c("dog", "cat", "reptile", "guinea pig", "dog"),
+  stringsAsFactors = FALSE
+)
+# Group rare categories
+group_rare_categories(df, "animal_type", c("reptile", "guinea pig"))
+}
 }

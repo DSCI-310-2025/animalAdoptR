@@ -32,9 +32,16 @@ This function evaluates a trained model on test data, computing confusion
 matrix, metrics, and summary statistics for binary classification.
 }
 \examples{
-# Defult usage
+\dontrun{
+# Example dummy data for testing
+test_data <- data.frame(adopted = factor(c("Yes", "No")),
+                        feature1 = c(1.2, 3.4),
+                        feature2 = c("A", "B"))
+rf_model <- randomForest::randomForest(adopted ~ ., data = test_data)
 results <- evaluate_rf_model(rf_model, test_data)
+
 # Access components
 metrics_df <- results$metrics
 conf_matrix <- results$confusion_matrix
+}
 }

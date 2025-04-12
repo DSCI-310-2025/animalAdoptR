@@ -10,7 +10,7 @@
 #' # Single date
 #' calculate_age_years("2015-01-01")
 #' # Vector of dates
-#' calculate_age_years(c("2010-05-15", "2018-10-20", ...))
+#' calculate_age_years(c("2010-05-15", "2018-10-20", "2012-03-03"))
 #' # With custom reference date
 #' calculate_age_years("2015-01-01", reference_date = "2020-01-01")
 #' @export
@@ -85,6 +85,7 @@ calculate_age_years <- function(dob, reference_date = Sys.Date()) {
 #' @examples
 #' assign_season(c("01", "04", "07", "10"))
 #' assign_season(c(1, 3, 8))
+#' @import dplyr
 #' @export
 assign_season <- function(month) {
   if (!is.character(month) && !is.numeric(month)) {
@@ -119,7 +120,15 @@ assign_season <- function(month) {
 #' @param other_name The name to assign to grouped categories, defaults to "Other"
 #' @return A modified data frame with the specified column modified
 #' @examples
-#' group_rare_categories(data, "animal_type", c("reptile", "guinea pig"))
+#' # group_rare_categories(data, "animal_type", c("reptile", "guinea pig"))
+#' \dontrun{
+#' df <- data.frame(
+#'   animal_type = c("dog", "cat", "reptile", "guinea pig", "dog"),
+#'   stringsAsFactors = FALSE
+#' )
+#' # Group rare categories
+#' group_rare_categories(df, "animal_type", c("reptile", "guinea pig"))
+#' }
 #' @export
 group_rare_categories <- function(data, column_name, rare_categories, other_name = "Other") {
   if (!column_name %in% names(data)) {
@@ -155,6 +164,11 @@ group_rare_categories <- function(data, column_name, rare_categories, other_name
 #' @param columns A character vector of column names to convert to factors
 #' @return A data frame with specified columns converted to factors
 #' @examples
+#' df <- data.frame(
+#'   animal_type = c("dog", "cat", "bird"),
+#'   sex = c("M", "F", "M"),
+#'   adopted = c("Yes", "No", "Yes")
+#' )
 #' convert_to_factors(df, c("animal_type", "sex", "adopted"))
 #' @export
 convert_to_factors <- function(data, columns) {

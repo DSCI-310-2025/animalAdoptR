@@ -18,5 +18,10 @@ A data frame with specified columns converted to factors
 Convert multiple columns to factors + Converts specified columns in a data frame to factor type.
 }
 \examples{
+df <- data.frame(
+  animal_type = c("dog", "cat", "bird"),
+  sex = c("M", "F", "M"),
+  adopted = c("Yes", "No", "Yes")
+)
 convert_to_factors(df, c("animal_type", "sex", "adopted"))
 }

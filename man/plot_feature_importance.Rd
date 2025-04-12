@@ -40,6 +40,17 @@ Plots variable importance scores from a trained Random Forest model.
 Optionally saves the plot to a file.
 }
 \examples{
+\dontrun{
+# Example random forest model for feature importance
+library(randomForest)
+df <- data.frame(
+  adopted = factor(c("Yes", "No", "Yes", "Yes", "No")),
+  feature1 = c(2.3, 1.1, 3.4, 2.1, 0.9),
+  feature2 = c("A", "B", "A", "B", "A")
+)
+model <- randomForest(adopted ~ ., data = df)
+
+# Plot feature importance
 plot_feature_importance(model)
-plot_feature_importance(model, path_saved = "importance.png", importance_type = 2)
+}
 }

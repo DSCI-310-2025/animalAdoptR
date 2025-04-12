@@ -7,7 +7,15 @@
 #' @return No return value. Writes a CSV file to the specified path.
 #'
 #' @examples
+#' \dontrun{
+#' # Example data
+#' df <- data.frame(
+#'   animal_type = c("Dog", "Cat", "Dog", "Rabbit", "Dog", "Cat")
+#' )
+#'
+#' # Save count table to CSV
 #' save_count_table(df, "animal_type", "results/tables/animal_counts.csv")
+#' }
 #'
 #' @export
 save_count_table <- function(data, col_name, output_path) {
@@ -27,9 +35,13 @@ save_count_table <- function(data, col_name, output_path) {
 #' @return A ggplot object representing the adoption distribution.
 #'
 #' @examples
+#' \dontrun{
+#' df <- data.frame(adopted = factor(c("Yes", "No", "Yes", "Yes", "No")))
 #' plot_adoption_distribution(df)
+#' }
 #'
 #' @export
+#' @import ggplot2
 plot_adoption_distribution <- function(data) {
   ggplot(data, aes(x = adopted)) +
     geom_bar(fill = "steelblue") +
@@ -49,9 +61,21 @@ plot_adoption_distribution <- function(data) {
 #' @return No return value. Saves the plot to the specified file path.
 #'
 #' @examples
-#' plot_grouped_adoption(df, "animal_type", "Adoption by Animal Type", "Animal Type", "results/figures/adoption_by_type.png")
+#' \dontrun{
+#' # Create sample data
+#' sample_data <- data.frame(
+#'   animal_type = c("dog", "cat", "dog", "cat", "bird"),
+#'   adopted = factor(c("Yes", "No", "Yes", "No", "Yes"))
+#' )
+#' plot_grouped_adoption(sample_data, 
+#'                      "animal_type", 
+#'                      "Adoption by Animal Type", 
+#'                      "Animal Type", 
+#'                      "results/figures/adoption_by_type.png")
+#' }
 #'
 #' @export
+#' @import ggplot2 
 plot_grouped_adoption <- function(data, group_col, title, xlab, output_path) {
   p <- ggplot(data, aes(x = .data[[group_col]], fill = adopted)) +
     geom_bar(position = "dodge") +
@@ -73,9 +97,16 @@ plot_grouped_adoption <- function(data, group_col, title, xlab, output_path) {
 #' @param output_path File path to save the resulting histogram
 #' @return No returned value. Saves the plot to the specified file path.
 #' @examples
-#' plot_age_distribution(df, "results/figures/age_distribution.png")
-#'
+#' \dontrun{
+#' # Create sample data
+#' sample_data <- data.frame(
+#'   age = c(1, 3, 5, 2, 4),
+#'   adopted = factor(c("Yes", "No", "Yes", "No", "Yes"))
+#' )
+#' plot_age_distribution(sample_data, "results/figures/age_distribution.png")
+#' }
 #' @export
+#' @importFrom ggplot2 ggplot aes geom_bar
 plot_age_distribution <- function(data, output_path) {
   p <- ggplot(data, aes(x = age, fill = adopted)) +
     geom_histogram(bins = 30, alpha = 0.7, position = "identity", color = "black") +

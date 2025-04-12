@@ -44,7 +44,15 @@ Plot confusion matrix as a heatmap
 Creates a heatmap visualization of a confusion matrix. Optionally saves the plot to a file.
 }
 \examples{
+\dontrun{
+# Create dummy confusion matrix
+library(caret)
+actual <- factor(c("Yes", "No", "Yes", "No", "Yes"))
+predicted <- factor(c("Yes", "Yes", "No", "No", "Yes"))
+cm <- caret::confusionMatrix(predicted, actual)
+
+# Plot it
 plot_confusion_matrix(cm)
-plot_confusion_matrix(cm, path_saved = "cm_plot.png")
+}
 
 }

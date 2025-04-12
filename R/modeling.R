@@ -13,9 +13,21 @@ source("R/data_loading.R")
 #' @param seed Random seed for reproducibility. Default: 123
 #' @return A trained randomForest model object
 #' @examples
+#' \dontrun{
+#' # Example data
+#' df <- data.frame(
+#'   adopted = factor(c("Yes", "No", "Yes", "No")),
+#'   age = c(2, 5, 1, 4),
+#'   sex = factor(c("M", "F", "F", "M"))
+#' )
+#' 
+#' # Train model
 #' model <- train_rf_model(df, adopted ~ age + sex)
+#' }
 #'
 #' @export
+#' @importFrom randomForest randomForest importance
+#' @importFrom stats predict
 train_rf_model <- function(d, 
                           formula,
                           ntree = 100,
@@ -88,12 +100,20 @@ train_rf_model <- function(d,
 #' @return A list containing: confusion_matrix (the caret confusionMatrix object),
 #'   metrics (dataframe with performance metrics), and cm_summary (confusion matrix summary)
 #' @export
+#' @importFrom randomForest randomForest
 #' @examples
-#' # Defult usage
+#' \dontrun{
+#' # Example dummy data for testing
+#' test_data <- data.frame(adopted = factor(c("Yes", "No")),
+#'                         feature1 = c(1.2, 3.4),
+#'                         feature2 = c("A", "B"))
+#' rf_model <- randomForest::randomForest(adopted ~ ., data = test_data)
 #' results <- evaluate_rf_model(rf_model, test_data)
+#' 
 #' # Access components
 #' metrics_df <- results$metrics
 #' conf_matrix <- results$confusion_matrix
+#' }
 evaluate_rf_model <- function(model, test_d, target_col = "adopted", 
                            positive_level = "Yes", negative_level = "No") {
   if (!inherits(model, "randomForest")) {
@@ -168,10 +188,19 @@ evaluate_rf_model <- function(model, test_d, target_col = "adopted",
 #' @return Invisibly returns the ggplot object.
 #'
 #' @examples
+#' \dontrun{
+#' # Create dummy confusion matrix
+#' library(caret)
+#' actual <- factor(c("Yes", "No", "Yes", "No", "Yes"))
+#' predicted <- factor(c("Yes", "Yes", "No", "No", "Yes"))
+#' cm <- caret::confusionMatrix(predicted, actual)
+#' 
+#' # Plot it
 #' plot_confusion_matrix(cm)
-#' plot_confusion_matrix(cm, path_saved = "cm_plot.png")
+#' }
 #'
 #' @export
+#' @import ggplot2
 plot_confusion_matrix <- function(cm, path_saved = NULL, 
                                  color_low = "#f1f1f1", 
                                  color_high = "#1f77b4",
@@ -239,9 +268,21 @@ plot_confusion_matrix <- function(cm, path_saved = NULL,
 #' @return Invisibly returns the ggplot object.
 #'
 #' @examples
+#' \dontrun{
+#' # Example random forest model for feature importance
+#' library(randomForest)
+#' df <- data.frame(
+#'   adopted = factor(c("Yes", "No", "Yes", "Yes", "No")),
+#'   feature1 = c(2.3, 1.1, 3.4, 2.1, 0.9),
+#'   feature2 = c("A", "B", "A", "B", "A")
+#' )
+#' model <- randomForest(adopted ~ ., data = df)
+#'
+#' # Plot feature importance
 #' plot_feature_importance(model)
-#' plot_feature_importance(model, path_saved = "importance.png", importance_type = 2)
+#' }
 #' @export
+#' @import ggplot2 
 plot_feature_importance <- function(model, path_saved = NULL,
                                    fill_color = "steelblue",
                                    importance_type = 1,

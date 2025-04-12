@@ -22,6 +22,14 @@ Save count table of a column
 Counts the occurrences of unique values in a column and saves the result as a CSV file.
 }
 \examples{
+\dontrun{
+# Example data
+df <- data.frame(
+  animal_type = c("Dog", "Cat", "Dog", "Rabbit", "Dog", "Cat")
+)
+
+# Save count table to CSV
 save_count_table(df, "animal_type", "results/tables/animal_counts.csv")
+}
 
 }

@@ -26,8 +26,6 @@ library(caret)
 library(randomForest)
 library(tidyverse)
 
-source("R/modeling.R")
-source("R/data_loading.R")
 
 test_that("train_rf_model trains a random forest model with formula parameter", {
   skip("Skipping: requires longbeach_transformed.csv")

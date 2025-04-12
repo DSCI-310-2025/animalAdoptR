@@ -26,6 +26,17 @@ Plot adoption distribution by group
 Generates a grouped bar chart showing adoption counts by a specified grouping variable.
 }
 \examples{
-plot_grouped_adoption(df, "animal_type", "Adoption by Animal Type", "Animal Type", "results/figures/adoption_by_type.png")
+\dontrun{
+# Create sample data
+sample_data <- data.frame(
+  animal_type = c("dog", "cat", "dog", "cat", "bird"),
+  adopted = factor(c("Yes", "No", "Yes", "No", "Yes"))
+)
+plot_grouped_adoption(sample_data, 
+                     "animal_type", 
+                     "Adoption by Animal Type", 
+                     "Animal Type", 
+                     "results/figures/adoption_by_type.png")
+}
 
 }

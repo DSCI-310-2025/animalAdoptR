@@ -17,7 +17,6 @@
 library(testthat)
 library(tidyverse)
 
-source("../../R/data_prep.R")  # Load the functions
 
 # Test for calculate_age_years function
 test_that("calculate_age_years works correctly", {
