@@ -1,6 +1,8 @@
-[![Pkgdown site](https://img.shields.io/badge/docs-pkgdown-blue)](https://dsci-310-2025.github.io/animalAdoptR/)
+<!-- [![Pkgdown site](https://img.shields.io/badge/docs-pkgdown-blue)](https://dsci-310-2025.github.io/animalAdoptR/) -->
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/DSCI-310-2025/animalAdoptR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/DSCI-310-2025/animalAdoptR/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/DSCI-310-2025/animalAdoptR/actions/workflows/pkgdown.yaml/badge.svg)](https://dsci-310-2025.github.io/animalAdoptR/)
 [![Codecov test coverage](https://codecov.io/gh/DSCI-310-2025/animalAdoptR/graph/badge.svg)](https://app.codecov.io/gh/DSCI-310-2025/animalAdoptR)
 <!-- badges: end -->
 
