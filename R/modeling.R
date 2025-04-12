@@ -1,6 +1,3 @@
-# Load utility functions
-source("R/data_loading.R")
-
 #' Train a Random Forest model
 #'
 #' Trains a Random Forest model using the provided formula and data. Handles both standard
