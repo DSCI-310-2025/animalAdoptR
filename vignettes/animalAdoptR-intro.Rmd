@@ -1,0 +1,272 @@
+---
+title: "Getting Started with animalAdoptR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with animalAdoptR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5,
+  fig.path = "man/figures/vignette-",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+```{r setup, warning=FALSE, message=FALSE}
+library(animalAdoptR)
+```
+
+## Introduction
+
+The `animalAdoptR` package provides specialized functions for working with animal shelter data, with a focus on predicting adoption outcomes. This vignette demonstrates how to use the package's main functions through a complete data analysis workflow.
+
+```{r load_packages}
+library(dplyr)
+library(ggplot2)
+library(readr)
+```
+
+## Sample Data
+
+For this vignette, let's create some sample animal shelter data:
+
+```{r sample-data}
+# Create sample data frame
+set.seed(123)
+n <- 100
+
+animal_data <- data.frame(
+  id = 1:n,
+  animal_type = sample(c("Dog", "Cat", "Rabbit", "Guinea Pig", "Bird"), n, replace = TRUE, 
+                     prob = c(0.5, 0.3, 0.1, 0.05, 0.05)),
+  sex = sample(c("M", "F"), n, replace = TRUE),
+  age = round(runif(n, 0, 15), 1),
+  weight_kg = round(runif(n, 1, 30), 1),
+  date_of_birth = as.Date("2020-01-01") - sample(1:2000, n, replace = TRUE),
+  intake_month = sample(formatC(1:12, width = 2, flag = "0"), n, replace = TRUE),
+  color = sample(c("Black", "White", "Brown", "Mixed", "Gray"), n, replace = TRUE),
+  adopted = sample(c("Yes", "No"), n, replace = TRUE, prob = c(0.7, 0.3))
+)
+
+# Display the first few rows
+head(animal_data)
+```
+
+## Data Preparation
+
+Let's use the package's data preparation functions to clean and transform our data.
+
+### 1. Create Directory Structure
+
+First, let's create directories for our outputs:
+
+```{r create-dirs}
+ensure_dir_exists("results")
+ensure_dir_exists("results/figures")
+ensure_dir_exists("results/tables")
+```
+
+### 2. Calculate Age from Date of Birth
+
+We can calculate the animal's age in years based on their date of birth:
+
+```{r calc-age}
+# Use reference date for consistent results
+reference_date <- as.Date("2024-01-01")
+animal_data$calculated_age <- calculate_age_years(animal_data$date_of_birth, reference_date)
+
+# Compare a few records to verify calculation
+head(data.frame(
+  dob = animal_data$date_of_birth[1:5],
+  calc_age = animal_data$calculated_age[1:5]
+))
+```
+
+### 3. Assign Season Based on Intake Month
+
+The intake month can be converted to a season for easier analysis:
+
+```{r assign-season}
+animal_data$intake_season <- assign_season(animal_data$intake_month)
+
+# View the distribution of intake seasons
+table(animal_data$intake_season)
+```
+
+### 4. Group Rare Animal Types
+
+We can consolidate rare animal types into an "Other" category:
+
+```{r group-rare}
+# Group Guinea Pig and Bird into "Other"
+animal_data <- group_rare_categories(
+  animal_data, 
+  "animal_type", 
+  c("Guinea Pig", "Bird"),
+  "Other"
+)
+
+# Check the distribution now
+table(animal_data$animal_type)
+```
+
+### 5. Convert Categorical Variables to Factors
+
+For modeling purposes, let's convert categorical variables to factors:
+
+```{r convert-factors}
+animal_data <- convert_to_factors(
+  animal_data, 
+  c("animal_type", "sex", "adopted", "intake_season")
+)
+
+str(animal_data[c("animal_type", "sex", "adopted", "intake_season")])
+```
+
+## Exploratory Data Analysis
+
+Now let's use the package's EDA functions to explore the data.
+
+### 1. Save Count Tables
+
+We can save count tables for categorical variables:
+
+```{r save-counts}
+# Count table for animal types
+save_count_table(animal_data, "animal_type", "results/tables/animal_type_counts.csv")
+
+# Count table for adoption status
+save_count_table(animal_data, "adopted", "results/tables/adopted_counts.csv")
+
+# Display the adoption counts
+read.csv("results/tables/adopted_counts.csv")
+```
+
+### 2. Visualize Adoption Distribution
+
+Let's create a bar chart showing overall adoption rates:
+
+```{r adoption-plot}
+adoption_plot <- plot_adoption_distribution(animal_data)
+print(adoption_plot)
+```
+
+### 3. Plot Adoption by Animal Type
+
+We can see how adoption varies by animal type:
+
+```{r adoption-by-type}
+plot_grouped_adoption(
+  animal_data,
+  "animal_type",
+  "Adoption Rates by Animal Type",
+  "Animal Type",
+  "results/figures/adoption_by_type.png"
+)
+```
+
+### 4. Age Distribution by Adoption Status
+
+The age distribution can provide insights into adoption preferences:
+
+```{r age-distribution}
+plot_age_distribution(animal_data, "results/figures/age_distribution.png")
+```
+
+## Modeling Adoption Outcomes
+
+Now, let's build a predictive model for adoption outcomes.
+
+### 1. Split Data for Training and Testing
+
+First, let's split our data into training and testing sets:
+
+```{r split-data}
+set.seed(42)
+train_indices <- sample(1:nrow(animal_data), 0.7 * nrow(animal_data))
+train_data <- animal_data[train_indices, ]
+test_data <- animal_data[-train_indices, ]
+
+cat("Training set size:", nrow(train_data), "\n")
+cat("Test set size:", nrow(test_data), "\n")
+```
+
+### 2. Train Random Forest Model
+
+We'll train a random forest model to predict adoption outcomes:
+
+```{r train-model}
+model <- train_rf_model(
+  train_data,
+  formula = adopted ~ animal_type + sex + calculated_age + weight_kg + intake_season,
+  ntree = 100,
+  mtry = 2,
+  seed = 123
+)
+
+# Print model summary
+print(model)
+```
+
+### 3. Evaluate Model Performance
+
+Let's evaluate how well our model performs on the test data:
+
+```{r evaluate-model}
+evaluation <- evaluate_rf_model(
+  model,
+  test_data,
+  target_col = "adopted",
+  positive_level = "Yes",
+  negative_level = "No"
+)
+
+# Display evaluation metrics
+evaluation$metrics
+```
+
+### 4. Visualize Confusion Matrix
+
+We can visualize the confusion matrix to better understand model performance:
+
+```{r confusion-matrix}
+conf_matrix_plot <- plot_confusion_matrix(
+  evaluation$confusion_matrix,
+  path_saved = "results/figures/confusion_matrix.png",
+  title = "Adoption Prediction Confusion Matrix"
+)
+```
+
+### 5. Visualize Feature Importance
+
+Finally, let's see which features were most important for prediction:
+
+```{r feature-importance}
+importance_plot <- plot_feature_importance(
+  model,
+  path_saved = "results/figures/feature_importance.png",
+  title = "Importance of Features for Predicting Adoption"
+)
+```
+
+## Conclusion
+
+This vignette demonstrated a complete workflow using `animalAdoptR` for analyzing animal shelter data and building a predictive model for adoption outcomes. The package provides specialized functions that streamline the process of:
+
+1. Data preparation and transformation
+2. Exploratory data analysis and visualization
+3. Building and evaluating predictive models
+
+For more details on each function, please refer to the function reference documentation.
+
+## Further Reading
+
+- Check out the [README](https://github.com/DSCI-310-2025/animalAdoptR/blob/main/README.md) for additional information
+- Explore the [function reference](https://dsci-310-2025.github.io/animalAdoptR/reference/index.html) for detailed parameter descriptions

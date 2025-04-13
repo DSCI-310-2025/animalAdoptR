@@ -18,6 +18,29 @@
 - Generate clean visualizations for adoption rates, feature importance, and confusion matrices
 - Save plots and summary tables directly to file
 
+## Where it fits in the R package ecosystem
+
+`animalAdoptR` provides a specialized and streamlined workflow for binary classification tasks using animal shelter data. While general-purpose R packages like:
+
+- [`tidymodels`](https://www.tidymodels.org/) provide end-to-end tools for model building and tuning
+- [`caret`](https://topepo.github.io/caret/) supports training and comparing many ML algorithms
+
+…these packages are broader in scope and require more configuration for domain-specific workflows.
+
+In contrast, `animalAdoptR` wraps the modeling and cleaning steps into simple, domain-focused functions tailored to adoption prediction, with sensible defaults and built-in visualizations — making it beginner-friendly for students or practitioners working on similar projects.
+
+## Dependencies
+
+This package imports the following R packages:
+
+- `dplyr` and `readr` for data wrangling
+- `ggplot2` for visualization
+- `randomForest` and `caret` for model training and evaluation
+- `testthat` for testing (used in development)
+
+These dependencies will be automatically installed when installing `devtools::install_github(“DSCI-310-2025/animalAdoptR”)` or `remotes::install_github(“DSCI-310-2025/animalAdoptR”)`.
+
+
 ## Installation
 
 To install the development version of `animalAdoptR` from GitHub:
@@ -49,6 +72,13 @@ plot_confusion_matrix(results$confusion_matrix)
 # Plot feature importance
 plot_feature_importance(model)
 ```
+
+## Documentation
+
+- **Package Website**: [animalAdoptR pkgdown site](https://dsci-310-2025.github.io/animalAdoptR/)
+- **Function Reference**: See the [Reference](https://dsci-310-2025.github.io/animalAdoptR/reference/index.html) page for documentation on all exported functions.
+- **Vignette Tutorial**: [Getting Started with animalAdoptR](https://dsci-310-2025.github.io/animalAdoptR/articles/animalAdoptR-intro.html)
+
 
 ## Code of Conduct
 

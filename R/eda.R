@@ -17,6 +17,7 @@
 #' save_count_table(df, "animal_type", "results/tables/animal_counts.csv")
 #' }
 #'
+#' @importFrom readr write_csv
 #' @export
 save_count_table <- function(data, col_name, output_path) {
   count_table <- data %>% count(.data[[col_name]], sort = TRUE)
