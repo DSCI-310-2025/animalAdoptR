@@ -1,7 +1,7 @@
 Package: animalAdoptR
 Title: Helper Functions for Animal Shelter Adoption Data Analysis
 Version: 0.1.0
-Authors@R:c(
+Authors@R: c(
     person("Abner", "Bal", , "email@example.com", role = "aut"),
     person("Kevin", "Jia", , "email@example.com", role = "aut"),
     person("Yuwen", "Luo", , "yuwen99@student.ubc.ca", role = c("aut", "cre")) )
@@ -12,6 +12,8 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0),
     tidyverse
 Config/testthat/edition: 3
@@ -22,3 +24,4 @@ Imports:
     randomForest,
     caret
 URL: https://dsci-310-2025.github.io/animalAdoptR/
+VignetteBuilder: knitr

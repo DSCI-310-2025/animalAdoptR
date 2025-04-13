@@ -38,7 +38,7 @@ This package imports the following R packages:
 - `randomForest` and `caret` for model training and evaluation
 - `testthat` for testing (used in development)
 
-These are automatically installed when using `devtools::install_github(“DSCI-310-2025/animalAdoptR”)` or `remotes::install_github(“DSCI-310-2025/animalAdoptR”)`.
+These dependencies will be automatically installed when installing `devtools::install_github(“DSCI-310-2025/animalAdoptR”)` or `remotes::install_github(“DSCI-310-2025/animalAdoptR”)`.
 
 
 ## Installation
@@ -77,6 +77,8 @@ plot_feature_importance(model)
 
 - **Package Website**: [animalAdoptR pkgdown site](https://dsci-310-2025.github.io/animalAdoptR/)
 - **Function Reference**: See the [Reference](https://dsci-310-2025.github.io/animalAdoptR/reference/index.html) page for documentation on all exported functions.
+- **Vignette Tutorial**: [Getting Started with animalAdoptR](https://dsci-310-2025.github.io/animalAdoptR/articles/animalAdoptR-intro.html)
+
 
 ## Code of Conduct
 

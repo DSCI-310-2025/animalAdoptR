@@ -4,3 +4,6 @@ docs
 # macOS system files
 .DS_Store
 **/.DS_Store
+inst/doc
+/doc/
+/Meta/
