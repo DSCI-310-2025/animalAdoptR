@@ -1,8 +1,9 @@
 pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2025-04-12T11:13Z
+articles:
+  animalAdoptR-intro: animalAdoptR-intro.html
+last_built: 2025-04-13T00:46Z
 urls:
   reference: https://dsci-310-2025.github.io/animalAdoptR/reference
   article: https://dsci-310-2025.github.io/animalAdoptR/articles

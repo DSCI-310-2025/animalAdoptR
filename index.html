@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">animalAdoptR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,12 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/animalAdoptR-intro.html">Getting Started with animalAdoptR</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -59,6 +65,35 @@
 <li>Generate clean visualizations for adoption rates, feature importance, and confusion matrices</li>
 <li>Save plots and summary tables directly to file</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="where-it-fits-in-the-r-package-ecosystem">Where it fits in the R package ecosystem<a class="anchor" aria-label="anchor" href="#where-it-fits-in-the-r-package-ecosystem"></a>
+</h2>
+<p><code>animalAdoptR</code> provides a specialized and streamlined workflow for binary classification tasks using animal shelter data. While general-purpose R packages like:</p>
+<ul>
+<li>
+<a href="https://www.tidymodels.org/" class="external-link"><code>tidymodels</code></a> provide end-to-end tools for model building and tuning</li>
+<li>
+<a href="https://topepo.github.io/caret/" class="external-link"><code>caret</code></a> supports training and comparing many ML algorithms</li>
+</ul>
+<p>…these packages are broader in scope and require more configuration for domain-specific workflows.</p>
+<p>In contrast, <code>animalAdoptR</code> wraps the modeling and cleaning steps into simple, domain-focused functions tailored to adoption prediction, with sensible defaults and built-in visualizations — making it beginner-friendly for students or practitioners working on similar projects.</p>
+</div>
+<div class="section level2">
+<h2 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
+</h2>
+<p>This package imports the following R packages:</p>
+<ul>
+<li>
+<code>dplyr</code> and <code>readr</code> for data wrangling</li>
+<li>
+<code>ggplot2</code> for visualization</li>
+<li>
+<code>randomForest</code> and <code>caret</code> for model training and evaluation</li>
+<li>
+<code>testthat</code> for testing (used in development)</li>
+</ul>
+<p>These dependencies will be automatically installed when installing <code>devtools::install_github(“DSCI-310-2025/animalAdoptR”)</code> or <code>remotes::install_github(“DSCI-310-2025/animalAdoptR”)</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -89,6 +124,20 @@
 <span></span>
 <span><span class="co"># Plot feature importance</span></span>
 <span><span class="fu"><a href="reference/plot_feature_importance.html">plot_feature_importance</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<ul>
+<li>
+<strong>Package Website</strong>: <a href="https://dsci-310-2025.github.io/animalAdoptR/">animalAdoptR pkgdown site</a>
+</li>
+<li>
+<strong>Function Reference</strong>: See the <a href="https://dsci-310-2025.github.io/animalAdoptR/reference/index.html">Reference</a> page for documentation on all exported functions.</li>
+<li>
+<strong>Vignette Tutorial</strong>: <a href="https://dsci-310-2025.github.io/animalAdoptR/articles/animalAdoptR-intro.html">Getting Started with animalAdoptR</a>
+</li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
