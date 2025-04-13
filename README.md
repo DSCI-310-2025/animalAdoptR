@@ -40,6 +40,8 @@ This package imports the following R packages:
 
 These dependencies will be automatically installed when installing `devtools::install_github(“DSCI-310-2025/animalAdoptR”)` or `remotes::install_github(“DSCI-310-2025/animalAdoptR”)`.
 
+**Note:** While these dependencies are automatically installed with the package, you'll need to load them separately with `library()` if you want to use their functions directly in your own code.
+
 
 ## Installation
 
