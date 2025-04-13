@@ -38,7 +38,7 @@ This package imports the following R packages:
 - `randomForest` and `caret` for model training and evaluation
 - `testthat` for testing (used in development)
 
-These are automatically installed when using `devtools::install_github(...)` or `remotes::install_github(...)`.
+These are automatically installed when using `devtools::install_github(“DSCI-310-2025/animalAdoptR”)` or `remotes::install_github(“DSCI-310-2025/animalAdoptR”)`.
 
 
 ## Installation
